@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="532db77a88bf40c086a6c1f49ba65ca0" Name="Diagram1">
+        <EntityTypeShape EntityType="EChallengeModel.C__MigrationHistory" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EChallengeModel.AspNetRole" Width="1.5" PointX="10.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EChallengeModel.AspNetUserClaim" Width="1.5" PointX="15.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="EChallengeModel.AspNetUserLogin" Width="1.5" PointX="15.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EChallengeModel.AspNetUser" Width="1.5" PointX="13" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EChallengeModel.Challenge" Width="1.5" PointX="8.25" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="EChallengeModel.ChallengeCategory" Width="1.5" PointX="6" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EChallengeModel.ChallengeRanking" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EChallengeModel.Gift" Width="1.5" PointX="0.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EChallengeModel.Role" Width="1.5" PointX="0.75" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EChallengeModel.sysdiagram" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EChallengeModel.UserChallenge" Width="1.5" PointX="6" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EChallengeModel.UserChallengeRanking" Width="1.5" PointX="10.5" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EChallengeModel.UserGiftRedemption" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EChallengeModel.UserRole" Width="1.5" PointX="3" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EChallengeModel.User" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
+        <AssociationConnector Association="EChallengeModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="EChallengeModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="EChallengeModel.FK_Challenge_ChallengeCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="EChallengeModel.FK_Challenge_UserChallenge" ManuallyRouted="false" />
+        <AssociationConnector Association="EChallengeModel.FK_ChallengeRanking_Challenge" ManuallyRouted="false" />
+        <AssociationConnector Association="EChallengeModel.FK_UserChallenge_Challenge" ManuallyRouted="false" />
+        <AssociationConnector Association="EChallengeModel.FK_UserChallengeRanking_Challenge" ManuallyRouted="false" />
+        <AssociationConnector Association="EChallengeModel.FK_UserChallengeRanking_Challenge1" ManuallyRouted="false" />
+        <AssociationConnector Association="EChallengeModel.FK_ChallengeRanking_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="EChallengeModel.FK_UserGiftRedemption_Gifts" ManuallyRouted="false" />
+        <AssociationConnector Association="EChallengeModel.FK_UserRole_Roles" ManuallyRouted="false" />
+        <AssociationConnector Association="EChallengeModel.FK_UserChallenge_UserChallengeRanking" ManuallyRouted="false" />
+        <AssociationConnector Association="EChallengeModel.FK_UserChallenge_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="EChallengeModel.FK_UserChallengeRanking_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="EChallengeModel.FK_UserGiftRedemption_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="EChallengeModel.FK_UserRole_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="EChallengeModel.AspNetUserRoles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

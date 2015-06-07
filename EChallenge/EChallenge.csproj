@@ -43,6 +43,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -175,9 +177,81 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AspNetRole.cs">
+      <DependentUpon>EChallengeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUser.cs">
+      <DependentUpon>EChallengeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserClaim.cs">
+      <DependentUpon>EChallengeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserLogin.cs">
+      <DependentUpon>EChallengeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Challenge.cs">
+      <DependentUpon>EChallengeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ChallengeCategory.cs">
+      <DependentUpon>EChallengeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ChallengeRanking.cs">
+      <DependentUpon>EChallengeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\C__MigrationHistory.cs">
+      <DependentUpon>EChallengeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EChallengeModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EChallengeModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EChallengeModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EChallengeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EChallengeModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EChallengeModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Gift.cs">
+      <DependentUpon>EChallengeModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Role.cs">
+      <DependentUpon>EChallengeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>EChallengeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagrams_Result.cs">
+      <DependentUpon>EChallengeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>EChallengeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\User.cs">
+      <DependentUpon>EChallengeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserChallenge.cs">
+      <DependentUpon>EChallengeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserChallengeRanking.cs">
+      <DependentUpon>EChallengeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserGiftRedemption.cs">
+      <DependentUpon>EChallengeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserRole.cs">
+      <DependentUpon>EChallengeModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Respository\ChallengeCategoryRepository.cs" />
+    <Compile Include="Respository\ChallengeRepository.cs" />
+    <Compile Include="Respository\UserRepository.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -189,6 +263,23 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Models\EChallengeModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>EChallengeModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\EChallengeModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EChallengeModel.edmx</DependentUpon>
+      <LastGenOutput>EChallengeModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\EChallengeModel.edmx.diagram">
+      <DependentUpon>EChallengeModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\EChallengeModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EChallengeModel.edmx</DependentUpon>
+      <LastGenOutput>EChallengeModel.cs</LastGenOutput>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -239,6 +330,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="ControllerAPIs\" />
+    <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -246,6 +339,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
