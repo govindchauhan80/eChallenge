@@ -54,6 +54,8 @@ namespace EChallenge.Respository
         {
             using (var entities = new EChallengeEntities())
             {
+                model.CreatedDate = DateTime.UtcNow;
+                model.UpdatedDate = DateTime.UtcNow;
                 entities.ChallengeCategories.Add(model);
                 entities.SaveChanges();
             }
