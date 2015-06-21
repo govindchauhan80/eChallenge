@@ -247,6 +247,32 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\img\1.jpg" />
+    <Content Include="Content\img\11.jpg" />
+    <Content Include="Content\img\12.jpg" />
+    <Content Include="Content\img\13.jpg" />
+    <Content Include="Content\img\14.jpg" />
+    <Content Include="Content\img\2.jpg" />
+    <Content Include="Content\img\3.jpg" />
+    <Content Include="Content\img\aboutus.jpg" />
+    <Content Include="Content\img\contact.jpg" />
+    <Content Include="Content\img\contact.png" />
+    <Content Include="Content\img\facebook-48circle.png" />
+    <Content Include="Content\img\googleplus-48circle.png" />
+    <Content Include="Content\img\instagram-48circle.png" />
+    <Content Include="Content\img\linkedin-48circle.png" />
+    <Content Include="Content\img\pinterest-48circle.png" />
+    <Content Include="Content\img\reddit-48circle.png" />
+    <Content Include="Content\img\stumbleupon-48circle.png" />
+    <Content Include="Content\img\tumblr-48circle.png" />
+    <Content Include="Content\img\twitter-48circle.png" />
+    <Content Include="Content\img\whywe.png" />
+    <Content Include="Content\jquery.bxslider.css" />
+    <Content Include="Content\js\bootstrap.js" />
+    <Content Include="Content\js\jquery.bxslider.min.js" />
+    <Content Include="Content\js\jquery.js" />
+    <Content Include="Content\master.css" />
+    <Content Include="Content\media.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -270,6 +296,15 @@
       <DependentUpon>EChallengeModel.edmx</DependentUpon>
       <LastGenOutput>EChallengeModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Content\img\cd-icon-arrow.svg" />
+    <Content Include="Content\img\cd-icon-budget.svg" />
+    <Content Include="Content\img\cd-icon-check.svg" />
+    <Content Include="Content\img\cd-icon-company.svg" />
+    <Content Include="Content\img\cd-icon-email.svg" />
+    <Content Include="Content\img\cd-icon-message.svg" />
+    <Content Include="Content\img\cd-icon-radio.svg" />
+    <Content Include="Content\img\cd-icon-user.svg" />
+    <Content Include="Content\img\cd-required.svg" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -293,9 +328,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
@@ -322,9 +354,11 @@
     <Content Include="Views\Challenge\Create.cshtml" />
     <Content Include="Views\Challenge\ChallengeView.cshtml" />
     <Content Include="Views\Challenge\Index.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\images\" />
     <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
