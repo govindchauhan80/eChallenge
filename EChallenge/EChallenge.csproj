@@ -173,6 +173,7 @@
     <Compile Include="ControllerAPIs\ChallengeCategoryController.cs" />
     <Compile Include="ControllerAPIs\ChallengeController.cs" />
     <Compile Include="ControllerAPIs\GiftController.cs" />
+    <Compile Include="ControllerAPIs\UserChallengeController.cs" />
     <Compile Include="ControllerAPIs\UserController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -258,6 +259,7 @@
     <Compile Include="Respository\GiftRepository.cs" />
     <Compile Include="Respository\UserCahllengeRepository.cs" />
     <Compile Include="Respository\UserRepository.cs" />
+    <Compile Include="Services\Common.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -336,7 +338,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

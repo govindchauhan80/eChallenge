@@ -58,11 +58,11 @@ namespace EChallenge
             //   appId: "",
             //   appSecret: "");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "5191694733-8673q8irdn81k2sv7h1u07ocdiqat0im.apps.googleusercontent.com",
+                ClientSecret = "Ic7DdlxdlULQdBVf7z3rLmgY"
+            });
         }
     }
 }
