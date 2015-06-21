@@ -43,6 +43,8 @@ namespace EChallenge.Respository
             model.UpdatesDate = DateTime.Now;
             using (var entities = new EChallengeEntities())
             {
+                model.CreatedDate = DateTime.UtcNow;
+                model.UpdatesDate = DateTime.UtcNow;
                 entities.Users.Add(model);
                 entities.SaveChanges();
             }
