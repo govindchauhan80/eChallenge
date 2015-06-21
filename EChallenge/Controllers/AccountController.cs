@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using EChallenge.Models;
 using EChallenge.Respository;
+using System.IO;
 
 namespace EChallenge.Controllers
 {
@@ -165,7 +166,8 @@ namespace EChallenge.Controllers
                     Address = model.Address,
                     City = model.City,
                     Country = model.Country,
-                    Pincode = model.PostCode
+                    Pincode = model.PostCode,
+                    ProfilePicUrl = ViewBag.ImageURL
                 };
                 // var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 //var result = await UserManager.CreateAsync(user, model.Password);
@@ -441,6 +443,44 @@ namespace EChallenge.Controllers
             }
 
             base.Dispose(disposing);
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public ActionResult Upload(HttpPostedFileBase file)
+        {
+            if(ModelState.IsValid)
+            {
+                if (file == null)
+                {
+                    ModelState.AddModelError("File", "Please Upload Your file");
+                }
+                else if (file.ContentLength > 0)
+                {
+                    int MaxContentLength = 1024 * 1024 * 4; //Size = 4 MB
+                    string[] AllowedFileExtensions = new string[] { ".jpg", ".gif", ".png", ".pdf" };
+                    if (!AllowedFileExtensions.Contains
+         (file.FileName.Substring(file.FileName.LastIndexOf('.'))))
+                    {
+                        ModelState.AddModelError("File", "Please file of type: " + string.Join(", ", AllowedFileExtensions));
+                    }
+                    else if (file.ContentLength > MaxContentLength)
+                    {
+                        ModelState.AddModelError("File", "Your file is too large, maximum allowed size is: " + MaxContentLength + " MB");
+                    }
+                    else
+                    {
+                        var fileName = Path.GetFileName(file.FileName);
+                        var path = Path.Combine(Server.MapPath("~/Content/Images"), fileName);
+                        ViewBag.ImageURL = path;
+                        ViewBag.keep();
+                        file.SaveAs(path);
+                        ModelState.Clear();
+                        ViewBag.Message = "File uploaded successfully. File path :   ~/Upload/" + fileName;
+                    }
+                }
+            }
+            return View("Register");
         }
 
         #region Helpers

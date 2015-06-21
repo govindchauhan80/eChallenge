@@ -1,31 +1,301 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    Layout = null;
 }
+<!DOCTYPE html>
+<html>
+<head>
+    <title>E-Challenge.Me</title>
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html" charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--Font CSS-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600italic,700,800,300' rel='stylesheet' type='text/css'>
+    <!-- Bootstrap Core CSS -->
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <!-- jQuery library (served from Google) -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+    <!--Custom CSS-->
+    <link href="~/Content/master.css" rel="stylesheet" />
+    <link href="~/Content/media.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="http://responsiveslides.com/responsiveslides.min.js"></script>
+    <!-- bxSlider Javascript file -->
+    <script src="~/Content/js/jquery.bxslider.min.js"></script>
+    <script src="~/Content/js/bootstrap.js"></script>
+    
+    <!-- bxSlider CSS file -->
+    <link href="~/Content/jquery.bxslider.css" rel="stylesheet" />
+    <script type="text/javascript">
+        $(function () {
+            // Slideshow 1
+            $(".rslides").responsiveSlides({
+                speed: 1000,
+                maxwidth: 1920,
+                speed: 500,
+            });
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+        });
+
+        $(function () {
+            $('body').on('click', '.page-scroll a', function (event) {
+                var $anchor = $(this);
+                $('html, body').stop().animate({
+                    scrollTop: $($anchor.attr('href')).offset().top
+                }, 1500, 'easeInOutExpo');
+                event.preventDefault();
+            });
+
+
+
+
+        });
+
+        $(document).ready(function () {
+            $('.bxslider').bxSlider({
+                auto: true,
+                autoControls: true,
+                speed: 300,
+                pager: false,
+            });
+
+
+            $('#sider3').bxSlider({
+                auto: true,
+                autoControls: true,
+                speed: 500,
+                pager: false,
+            });
+
+        });
+    </script>
+
+
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#home">Home</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#howto">How to</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#challange">Challanges</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#aboutus">About Us</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#contact">Contact Us</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#login">Login</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    <section id="home">
+        <div class="homepageText">
+            <h2>Show your Ability.....</h2>
+            <h3>
+                Everyone is Unique , Everyone has ability to do someting<br />
+                That can leave other amazed....
+            </h3>
+        </div>
+        <a class="" href="#HowTo">
+            <div class="arrow bounce">
+            </div>
+        </a>
+        <ul class="rslides">
+            <li><img src="~/Content/img/3.jpg" class="img-responsive" /></li>
+            <li><img src="~/Content/img/2.jpg" class="img-responsive" /></li>
+            <li><img src="~/Content/img/1.jpg" class="img-responsive" /></li>
+        </ul>
+
+    </section>
+    <section id="howto">
+        <div class="howtotext">
+            <h2>This is the plateform.....</h2>
+            <h3>How To Do It....</h3>
+            <h4>Want To Create Challange For Others....</h4>
+        </div>
+
+        <ul>
+            <li><a href="#">Register<div></div></a></li>
+            <li><a href="#">Choose Category<div></div></a></li>
+            <li><a href="#">Create Challange<div></div></a></li>
+            <li><a href="#">Provide Details<div></div></a></li>
+            <li><a href="#">Upload Documents (Video/Pics etc.)<div></div></a></li>
+            <li><a href="#">Broadcast on Social Network<div></div></a></li>
+            <li><a href="#">Earn Points<div></div></a></li>
+            <li><a href="#">Redeem For Exciting Gifts<div></div></a></li>
+        </ul>
+        <div class="howtotext">
+            <h4>Want To Create Challange For Others....</h4>
+        </div>
+        <ul>
+            <li><a href="#">Register<div></div></a></li>
+            <li><a href="#">Choose Category<div></div></a></li>
+            <li><a href="#">Create Challange<div></div></a></li>
+            <li><a href="#">Provide Details<div></div></a></li>
+            <li><a href="#">Upload Documents (Video/Pics etc.)<div></div></a></li>
+            <li><a href="#">Broadcast on Social Network<div></div></a></li>
+            <li><a href="#">Earn Points<div></div></a></li>
+            <li><a href="#">Redeem For Exciting Gifts<div></div></a></li>
+        </ul>
+    </section>
+    <section id="challange">
+        <div class="sliderLeft">
+            <h2>Active Challanges</h2>
+            <ul class="bxslider">
+                <li><img src="~/Content/img/3.jpg" class="img-responsive" /></li>
+                <li><img src="~/Content/img/2.jpg" class="img-responsive" /></li>
+                <li><img src="~/Content/img/1.jpg" class="img-responsive" /></li>
+            </ul>
+        </div>
+        <div class="playerRight">
+            <h2>Rankings</h2>
+            <ul>
+                <li><a href="#">Player One</a></li>
+                <li><a href="#">Player One</a></li>
+                <li><a href="#">Player One</a></li>
+                <li><a href="#">Player One</a></li>
+                <li><a href="#">Player One</a></li>
+                <li><a href="#">Player One</a></li>
+                <li><a href="#">Player One</a></li>
+                <li><a href="#">Player One</a></li>
+                <li><a href="#">Player One</a></li>
+                <li><a href="#">Player One</a></li>
+                <li><a href="#">Player One</a></li>
+                <li><a href="#">Player One</a></li>
+                <li><a href="#">Player One</a></li>
+                <li><a href="#">Player One</a></li>
+                <li><a href="#">Player One</a></li>
+            </ul>
+        </div>
+        <div class="clr"></div>
+        <div>
+            <h2>Active Challanges</h2>
+            <ul id="sider3" class="bxslider">
+                <li><img src="~/Content/img/11.jpg" class="img-responsive" /></li>
+                <li><img src="~/Content/img/12.jpg" class="img-responsive" /></li>
+                <li><img src="~/Content/img/13.jpg" class="img-responsive" /></li>
+                <li><img src="~/Content/img/14.jpg" class="img-responsive" /></li>
+            </ul>
+        </div>
+
+    </section>
+    <section id="aboutus">
+        <div class="aboutDetail">
+            <h2>About us</h2>
+            <p>
+                The platform e-challenge.me is the first website of this kind on the whole Internet where you can both create and take up challenges, contributing to building an international, twicky community of people who simply have the will and courage to share their abilities and passions with the world!
+            </p>
+
+            <p>Our mission is to persuade people to get out their comfort zone, as we know that this is the first step towards the personal growth and development, as well as the first step towards making the world a place filled with people who use their potential to the full! So, dear friends, pluck up the courage to showcase your wonderful, exceptional skills and also encourage others to challenge themselves!</p>
+
+            <p>We already have plenty of ideas for further improvements, like implementing chat, possibility to redeem points collected while participating in challenges for products of well-known brands and many others which we won’t reveal now to make you amazed once they have been brought on.We will be very grateful for your contribution in creating this portal, so all these amazing surprises can be introduced. The truth is that everyone is able to cross their limits and do the things they would probably never expect from themselves if one day they wouldn’t have stumbled upon a person who simply had thrown them a challenge…  </p>
+        </div>
+    </section>
+    <section id="contact">
+        <div class="contactDiv col-md-6">
+            <h2>
+                If you are curious<br /> to know more about us,<br />do not hesitate to get in touch. <br />Send us mail<br /> from below link.<br />
+                <a href="#" class="contactLink">
+                    Contact us
+                </a>
+            </h2>
+        </div>
+        <div class="contactForm col-md-6">
+            <form class="cd-form floating-labels">
+                <fieldset>
+                    <div class="icon">
+                        <label for="cd-name" class="cd-label">Name</label>
+                        <input type="text" required="" id="cd-name" name="cd-name" class="user">
+                        <div class="clr"></div>
+                    </div>
+
+                    <div class="icon">
+                        <label for="cd-email" class="cd-label">Email</label>
+                        <input type="email" required="" id="cd-email" name="cd-email" class="email">
+                        <div class="clr"></div>
+                    </div>
+                    <div class="icon">
+                        <label for="cd-textarea" class="cd-label">Message</label>
+                        <textarea required="" id="cd-textarea" rows="10" name="cd-textarea" class="message"></textarea>
+                        <div class="clr"></div>
+                    </div>
+                    <div>
+                        <input type="submit" class="button" value="Send Message">
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        <div class="clr"></div>
+    </section>
+    <div class="clr"></div>
+    <footer id="login">
+        <div class="container">
+            <div class="col-md-4">
+                <h2>Browes</h2>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">How to</a></li>
+                    <li><a href="#">Challanges</a></li>
+                    <li><a href="#">About us</a></li>
+                    <li><a href="#">Contact us</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h2>Support</h2>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Term Of Service</a></li>
+                    <li><a href="#">Promotion</a></li>
+                    <li><a href="#">About us</a></li>
+                    <li><a href="#">Contact us</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h2>Social Media</h2>
+                <a class="social-popout" href="#"><img src="~/Content/img/facebook-48circle.png" /></a>
+                <a class="social-popout" href="#"><img src="~/Content/img/googleplus-48circle.png" /></a>
+                <a class="social-popout" href="#"><img src="~/Content/img/instagram-48circle.png" /></a>
+                <a class="social-popout" href="#"><img src="~/Content/img/linkedin-48circle.png" /></a>
+                <a class="social-popout" href="#"><img src="~/Content/img/pinterest-48circle.png" /></a>
+                <a class="social-popout" href="#"><img src="~/Content/img/reddit-48circle.png" /></a>
+                <a class="social-popout" href="#"><img src="~/Content/img/stumbleupon-48circle.png" /></a>
+                <a class="social-popout" href="#"><img src="~/Content/img/tumblr-48circle.png" /></a>
+                <a class="social-popout" href="#"><img src="~/Content/img/twitter-48circle.png" /></a>
+            </div>
+            <div class="clr"></div>
+        </div>
+    </footer>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>
