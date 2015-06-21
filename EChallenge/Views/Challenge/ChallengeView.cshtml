@@ -1,0 +1,22 @@
+﻿@model IEnumerable<echallenge.models.challengecategory>
+
+    @{
+    ViewBag.Title = "ChallengeView";
+    }
+
+    <div class="container-fluid">
+        @foreach (var item in Model)
+{
+            <div class="row">
+                @item.ChallengeCategoryId;
+                System.Collections.ICollection<challenge>
+                    challenges = @item.Challenges;
+
+                    @foreach(var challenge in challenges)
+    {
+                        @challenge.ChallengeId;
+                        @challenge.ChallengeImagePath;
+    }
+                    }
+            </div>
+        </div>

@@ -27,17 +27,11 @@ namespace EChallenge.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
-        public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
-        public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
-        public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
-        public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
         public virtual DbSet<Challenge> Challenges { get; set; }
         public virtual DbSet<ChallengeCategory> ChallengeCategories { get; set; }
         public virtual DbSet<ChallengeRanking> ChallengeRankings { get; set; }
         public virtual DbSet<Gift> Gifts { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<UserChallenge> UserChallenges { get; set; }
         public virtual DbSet<UserChallengeRanking> UserChallengeRankings { get; set; }
         public virtual DbSet<UserGiftRedemption> UserGiftRedemptions { get; set; }

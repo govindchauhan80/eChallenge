@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using EChallenge.Models;
+using EChallenge.Respository;
 
 namespace EChallenge.Controllers
 {
@@ -22,7 +23,7 @@ namespace EChallenge.Controllers
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -34,9 +35,9 @@ namespace EChallenge.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -120,7 +121,7 @@ namespace EChallenge.Controllers
             // If a user enters incorrect codes for a specified amount of time then the user account 
             // will be locked out for a specified amount of time. 
             // You can configure the account lockout settings in IdentityConfig
-            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
+            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent: model.RememberMe, rememberBrowser: model.RememberBrowser);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -151,12 +152,31 @@ namespace EChallenge.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                var result = await UserManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
+                var user = new User
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+                    FirstName = model.FirstName,
+                    MiddleName = model.MiddleName,
+                    LastName = model.LastName,
+                    DOB = model.DOB,
+                    DisplayName = model.DisplayName,
+                    EmailId = model.Email,
+                    Password = model.Password,
+                    ContactNumber = model.ContactNumber,
+                    Address = model.Address,
+                    City = model.City,
+                    Country = model.Country,
+                    Pincode = model.PostCode
+                };
+                // var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                //var result = await UserManager.CreateAsync(user, model.Password);
+                UserRepository userRepository = new UserRepository();
+                userRepository.CreateUser(user);
+                //if (result.Succeeded)
+                //{
+
+                    //await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                    var loginModel = new LoginViewModel{Email=model.Email,Password=model.Password,RememberMe=false};
+                    await Login(loginModel, "/Index/Home");
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
@@ -164,8 +184,8 @@ namespace EChallenge.Controllers
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
                     return RedirectToAction("Index", "Home");
-                }
-                AddErrors(result);
+               // }
+                //AddErrors(result);
             }
 
             // If we got this far, something failed, redisplay form
