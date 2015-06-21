@@ -1,0 +1,159 @@
+﻿@model EChallenge.Models.Challenge
+
+@{
+    ViewBag.Title = "Create Challenge";
+}
+
+<h2>Create Challenge</h2>
+<hr />
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Title, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Title)
+                @Html.ValidationMessageFor(model => model.Title)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Severity, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Severity)
+                @Html.ValidationMessageFor(model => model.Severity)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PersonsRequired, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PersonsRequired)
+                @Html.ValidationMessageFor(model => model.PersonsRequired)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Steps, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Steps)
+                @Html.ValidationMessageFor(model => model.Steps)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Precautions, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Precautions)
+                @Html.ValidationMessageFor(model => model.Precautions)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Note, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Note)
+                @Html.ValidationMessageFor(model => model.Note)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TimeLimit, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TimeLimit)
+                @Html.ValidationMessageFor(model => model.TimeLimit)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ChallengeCategoryId, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ChallengeCategoryId)
+                @Html.ValidationMessageFor(model => model.ChallengeCategoryId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SupportingDocumentType, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SupportingDocumentType)
+                @Html.ValidationMessageFor(model => model.SupportingDocumentType)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SupportingDocumentPath, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SupportingDocumentPath)
+                @Html.ValidationMessageFor(model => model.SupportingDocumentPath)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ChallengeImagePath, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ChallengeImagePath)
+                @Html.ValidationMessageFor(model => model.ChallengeImagePath)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CreatedBy, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CreatedBy)
+                @Html.ValidationMessageFor(model => model.CreatedBy)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ExpiryDate, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ExpiryDate)
+                @Html.ValidationMessageFor(model => model.ExpiryDate)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CreatedDated, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CreatedDated)
+                @Html.ValidationMessageFor(model => model.CreatedDated)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UpdatedDate, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.UpdatedDate)
+                @Html.ValidationMessageFor(model => model.UpdatedDate)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IsDeleted, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.IsDeleted)
+                @Html.ValidationMessageFor(model => model.IsDeleted)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

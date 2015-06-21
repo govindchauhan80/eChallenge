@@ -39,6 +39,8 @@ namespace EChallenge.Respository
         /// <param name="model"></param>
         public void CreateUser(User model)
         {
+            model.CreatedDate = DateTime.Now;
+            model.UpdatesDate = DateTime.Now;
             using (var entities = new EChallengeEntities())
             {
                 model.CreatedDate = DateTime.UtcNow;

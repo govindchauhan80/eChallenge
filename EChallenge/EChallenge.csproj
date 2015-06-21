@@ -176,24 +176,14 @@
     <Compile Include="ControllerAPIs\UserChallengeController.cs" />
     <Compile Include="ControllerAPIs\UserController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ChallengeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\AspNetRole.cs">
-      <DependentUpon>EChallengeModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AspNetUser.cs">
-      <DependentUpon>EChallengeModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AspNetUserClaim.cs">
-      <DependentUpon>EChallengeModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AspNetUserLogin.cs">
-      <DependentUpon>EChallengeModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Challenge.cs">
       <DependentUpon>EChallengeModel.tt</DependentUpon>
     </Compile>
@@ -201,9 +191,6 @@
       <DependentUpon>EChallengeModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ChallengeRanking.cs">
-      <DependentUpon>EChallengeModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\C__MigrationHistory.cs">
       <DependentUpon>EChallengeModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\EChallengeModel.Context.cs">
@@ -233,9 +220,6 @@
       <DependentUpon>EChallengeModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_helpdiagrams_Result.cs">
-      <DependentUpon>EChallengeModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>EChallengeModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\User.cs">
@@ -335,6 +319,11 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Profile\Details.cshtml" />
+    <Content Include="Views\Profile\Edit.cshtml" />
+    <Content Include="Views\Challenge\Create.cshtml" />
+    <Content Include="Views\Challenge\ChallengeView.cshtml" />
+    <Content Include="Views\Challenge\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

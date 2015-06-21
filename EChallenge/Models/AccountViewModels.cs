@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace EChallenge.Models
@@ -65,6 +66,26 @@ namespace EChallenge.Models
     public class RegisterViewModel
     {
         [Required]
+        [Display(Name="First Name")]
+        public string FirstName { get; set; }
+
+        [Display(Name = "Middle Name")]
+        public string MiddleName { get; set; }
+
+        [Required]
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
+
+        [Required]
+        [Display(Name = "DOB")]
+        [DataType(DataType.Date)]
+        public DateTime DOB { get; set; }
+
+        [Required]
+        [Display(Name = "Display Name")]
+        public string DisplayName { get; set; }
+
+        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
@@ -79,6 +100,21 @@ namespace EChallenge.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Display(Name = "Contact Number")]
+        public string ContactNumber { get; set; }
+
+        [Display(Name = "Address")]
+        public string Address { get; set; }
+
+        [Display(Name = "City")]
+        public string City { get; set; }
+
+        [Display(Name = "Country")]
+        public string Country { get; set; }
+
+        [Display(Name = "PostCode")]
+        public decimal? PostCode { get; set; }
     }
 
     public class ResetPasswordViewModel
