@@ -167,41 +167,50 @@
     <section id="challange">
         <div class="sliderLeft">
             <h2>Active Challanges</h2>
-            <ul class="bxslider">
+            @if (ViewBag.ActiveChallenge != null)
+            {
+                List<EChallenge.Models.Challenge> lstChallenge = (List<EChallenge.Models.Challenge>)ViewBag.ActiveChallenge;
+                <ul class="bxslider">
+                    @foreach (EChallenge.Models.Challenge challenge in lstChallenge)
+                    {
+                        <li><img src=@Url.Content(@challenge.ChallengeImagePath) class="img-responsive" /></li>
+                    }
+                </ul>
+            }
+            @*<ul class="bxslider">
                 <li><img src="~/Content/img/3.jpg" class="img-responsive" /></li>
                 <li><img src="~/Content/img/2.jpg" class="img-responsive" /></li>
                 <li><img src="~/Content/img/1.jpg" class="img-responsive" /></li>
-            </ul>
+            </ul>*@
         </div>
         <div class="playerRight">
             <h2>Rankings</h2>
             <ul>
-                <li><a href="#">Player One</a></li>
-                <li><a href="#">Player One</a></li>
-                <li><a href="#">Player One</a></li>
-                <li><a href="#">Player One</a></li>
-                <li><a href="#">Player One</a></li>
-                <li><a href="#">Player One</a></li>
-                <li><a href="#">Player One</a></li>
-                <li><a href="#">Player One</a></li>
-                <li><a href="#">Player One</a></li>
-                <li><a href="#">Player One</a></li>
-                <li><a href="#">Player One</a></li>
-                <li><a href="#">Player One</a></li>
-                <li><a href="#">Player One</a></li>
-                <li><a href="#">Player One</a></li>
-                <li><a href="#">Player One</a></li>
+                <li><a href="#">Shubham 7</a></li>
+                <li><a href="#">Abhishek 7</a></li>
+                <li><a href="#">Govind 4</a></li>
             </ul>
         </div>
         <div class="clr"></div>
         <div>
-            <h2>Active Challanges</h2>
-            <ul id="sider3" class="bxslider">
+            <h2>Gifts And Rewards</h2>
+            @if (ViewBag.Gifts != null)
+            {
+                List<EChallenge.Models.Gift> lstGifts = (List<EChallenge.Models.Gift>)ViewBag.Gifts;
+                <ul id="sider3" class="bxslider">
+                    @foreach (EChallenge.Models.Gift gift in lstGifts)
+                    {
+                        @*<li><img src="~/Content/img/3.jpg" class="img-responsive" /></li>*@
+                        <li><img src=@Url.Content(@gift.ImagePath) class="img-responsive" /></li>
+                    }
+                </ul>
+            }
+            @*<ul id="sider3" class="bxslider">
                 <li><img src="~/Content/img/11.jpg" class="img-responsive" /></li>
                 <li><img src="~/Content/img/12.jpg" class="img-responsive" /></li>
                 <li><img src="~/Content/img/13.jpg" class="img-responsive" /></li>
                 <li><img src="~/Content/img/14.jpg" class="img-responsive" /></li>
-            </ul>
+            </ul>*@
         </div>
 
     </section>
