@@ -234,6 +234,8 @@
     <Compile Include="Models\UserGiftRedemption.cs">
       <DependentUpon>EChallengeModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ChallengeRankingViewModel.cs" />
+    <Compile Include="Models\UserRankingViewModel.cs" />
     <Compile Include="Models\UserRole.cs">
       <DependentUpon>EChallengeModel.tt</DependentUpon>
     </Compile>
@@ -241,7 +243,11 @@
     <Compile Include="Respository\ChallengeCategoryRepository.cs" />
     <Compile Include="Respository\ChallengeRepository.cs" />
     <Compile Include="Respository\GiftRepository.cs" />
+    <Compile Include="Respository\LoginRepository.cs" />
     <Compile Include="Respository\UserCahllengeRepository.cs" />
+    <Compile Include="Respository\UserChallengeRankingRepository.cs" />
+    <Compile Include="Respository\ChallengeRankingRepository.cs" />
+    <Compile Include="Respository\UserGiftRedemptionRepository.cs" />
     <Compile Include="Respository\UserRepository.cs" />
     <Compile Include="Services\Common.cs" />
     <Compile Include="Startup.cs" />
