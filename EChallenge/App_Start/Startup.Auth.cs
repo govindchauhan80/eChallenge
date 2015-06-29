@@ -6,6 +6,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using EChallenge.Models;
+using Microsoft.Owin.Security.Facebook;
 
 namespace EChallenge
 {
@@ -58,11 +59,64 @@ namespace EChallenge
             //   appId: "",
             //   appSecret: "");
 
-            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            var x = new FacebookAuthenticationOptions();
+            x.Scope.Add("email");
+            x.AppId = "Key";
+            x.AppSecret = "Secret";
+            x.Provider = new FacebookAuthenticationProvider()
             {
-                ClientId = "5191694733-8673q8irdn81k2sv7h1u07ocdiqat0im.apps.googleusercontent.com",
-                ClientSecret = "Ic7DdlxdlULQdBVf7z3rLmgY"
-            });
+                OnAuthenticated = async context =>
+                {
+                    context.Identity.AddClaim(new System.Security.Claims.Claim("AccessToken", context.AccessToken));
+                    context.Identity.AddClaim(new System.Security.Claims.Claim("Provider", "Facebook"));
+
+                    string phoneNumber = string.Empty;
+                    string profilePicUrl = string.Empty;
+                    foreach (var claim in context.User)
+                    {
+                        var claimType = claim.Key;
+                        string claimValue = claim.Value.ToString();
+                        if (!context.Identity.HasClaim(claimType, claimValue))
+                            context.Identity.AddClaim(new System.Security.Claims.Claim(claimType, claimValue, "XmlSchemaString", "Facebook"));
+
+                    }
+                    context.Identity.AddClaim(new System.Security.Claims.Claim("Phonenumber", phoneNumber));
+                    context.Identity.AddClaim(new System.Security.Claims.Claim("ProfilePicUrl", profilePicUrl));
+                }
+            };
+
+            x.SignInAsAuthenticationType = DefaultAuthenticationTypes.ExternalCookie;
+            app.UseFacebookAuthentication(x);
+
+            var googleOptions = new GoogleOAuth2AuthenticationOptions();
+            googleOptions.ClientId = "5191694733-8673q8irdn81k2sv7h1u07ocdiqat0im.apps.googleusercontent.com";
+            googleOptions.ClientSecret = "Ic7DdlxdlULQdBVf7z3rLmgY";
+            googleOptions.Provider = new GoogleOAuth2AuthenticationProvider()
+            {
+                OnAuthenticated = async context =>
+                {
+                    context.Identity.AddClaim(new System.Security.Claims.Claim("AccessToken", context.AccessToken));
+                    context.Identity.AddClaim(new System.Security.Claims.Claim("Provider", "Google"));
+                    string phoneNumber = string.Empty;
+                    string profilePicUrl = string.Empty;
+                    foreach (var claim in context.User)
+                    {
+                        var claimType = claim.Key;
+
+                        if (string.Equals(claimType, "phonenumber", StringComparison.OrdinalIgnoreCase))
+                            phoneNumber = claim.Value.ToString();
+
+                        if (string.Equals(claimType, "image", StringComparison.OrdinalIgnoreCase))
+                            profilePicUrl = claim.Value.First.First.ToString();
+                    }
+                    context.Identity.AddClaim(new System.Security.Claims.Claim("Phonenumber", phoneNumber));
+                    context.Identity.AddClaim(new System.Security.Claims.Claim("ProfilePicUrl", profilePicUrl));
+                }
+            };
+            googleOptions.Scope.Add("https://www.googleapis.com/auth/plus.login");
+            googleOptions.Scope.Add("https://www.googleapis.com/auth/userinfo.email");
+
+            app.UseGoogleAuthentication(googleOptions);
         }
     }
 }
