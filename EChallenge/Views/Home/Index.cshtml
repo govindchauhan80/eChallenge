@@ -9,7 +9,7 @@
     <meta http-equiv="content-type" content="text/html" charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--Font CSS-->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600italic,700,800,300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600italic,700,800,300' rel='stylesheet' type='text/css'>
     <!-- Bootstrap Core CSS -->
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <!-- jQuery library (served from Google) -->
@@ -18,12 +18,8 @@
     <!--Custom CSS-->
     <link href="~/Content/master.css" rel="stylesheet" />
     <link href="~/Content/media.css" rel="stylesheet" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-    <script src="http://responsiveslides.com/responsiveslides.min.js"></script>
-    <!-- bxSlider Javascript file -->
-    <script src="~/Content/js/jquery.bxslider.min.js"></script>
-    <script src="~/Content/js/bootstrap.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+   
     
     <!-- bxSlider CSS file -->
     <link href="~/Content/jquery.bxslider.css" rel="stylesheet" />
@@ -171,41 +167,50 @@
     <section id="challange">
         <div class="sliderLeft">
             <h2>Active Challanges</h2>
-            <ul class="bxslider">
+            @if (ViewBag.ActiveChallenge != null)
+            {
+                List<EChallenge.Models.Challenge> lstChallenge = (List<EChallenge.Models.Challenge>)ViewBag.ActiveChallenge;
+                <ul class="bxslider">
+                    @foreach (EChallenge.Models.Challenge challenge in lstChallenge)
+                    {
+                        <li><img src=@Url.Content(@challenge.ChallengeImagePath) class="img-responsive" /></li>
+                    }
+                </ul>
+            }
+            @*<ul class="bxslider">
                 <li><img src="~/Content/img/3.jpg" class="img-responsive" /></li>
                 <li><img src="~/Content/img/2.jpg" class="img-responsive" /></li>
                 <li><img src="~/Content/img/1.jpg" class="img-responsive" /></li>
-            </ul>
+            </ul>*@
         </div>
         <div class="playerRight">
             <h2>Rankings</h2>
             <ul>
-                <li><a href="#">Player One</a></li>
-                <li><a href="#">Player One</a></li>
-                <li><a href="#">Player One</a></li>
-                <li><a href="#">Player One</a></li>
-                <li><a href="#">Player One</a></li>
-                <li><a href="#">Player One</a></li>
-                <li><a href="#">Player One</a></li>
-                <li><a href="#">Player One</a></li>
-                <li><a href="#">Player One</a></li>
-                <li><a href="#">Player One</a></li>
-                <li><a href="#">Player One</a></li>
-                <li><a href="#">Player One</a></li>
-                <li><a href="#">Player One</a></li>
-                <li><a href="#">Player One</a></li>
-                <li><a href="#">Player One</a></li>
+                <li><a href="#">Shubham 7</a></li>
+                <li><a href="#">Abhishek 7</a></li>
+                <li><a href="#">Govind 4</a></li>
             </ul>
         </div>
         <div class="clr"></div>
         <div>
-            <h2>Active Challanges</h2>
-            <ul id="sider3" class="bxslider">
+            <h2>Gifts And Rewards</h2>
+            @if (ViewBag.Gifts != null)
+            {
+                List<EChallenge.Models.Gift> lstGifts = (List<EChallenge.Models.Gift>)ViewBag.Gifts;
+                <ul id="sider3" class="bxslider">
+                    @foreach (EChallenge.Models.Gift gift in lstGifts)
+                    {
+                        @*<li><img src="~/Content/img/3.jpg" class="img-responsive" /></li>*@
+                        <li><img src=@Url.Content(@gift.ImagePath) class="img-responsive" /></li>
+                    }
+                </ul>
+            }
+            @*<ul id="sider3" class="bxslider">
                 <li><img src="~/Content/img/11.jpg" class="img-responsive" /></li>
                 <li><img src="~/Content/img/12.jpg" class="img-responsive" /></li>
                 <li><img src="~/Content/img/13.jpg" class="img-responsive" /></li>
                 <li><img src="~/Content/img/14.jpg" class="img-responsive" /></li>
-            </ul>
+            </ul>*@
         </div>
 
     </section>
