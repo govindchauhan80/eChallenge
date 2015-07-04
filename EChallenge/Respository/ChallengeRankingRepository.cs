@@ -8,7 +8,10 @@ namespace EChallenge.Respository
 {
     public class ChallengeRankingRepository
     {
-
+        /// <summary>
+        /// Gets all challege and their ranking
+        /// </summary>
+        /// <returns></returns>
         public ICollection<ChallengeRankingViewModel> GetAllChallengeRanking()
         {
             var entities = new EChallengeEntities();
@@ -22,13 +25,21 @@ namespace EChallenge.Respository
                     }).ToList();
         }
 
-
+        /// <summary>
+        /// Gets ranking of a challenge
+        /// </summary>
+        /// <param name="challengeId"></param>
+        /// <returns></returns>
         public ICollection<ChallengeRanking> GetChallengeRankingByChallengeId(int challengeId)
         {
             var entities = new EChallengeEntities();
             return entities.ChallengeRankings.Where(c => c.ChallegneId == challengeId).ToList();
         }
 
+        /// <summary>
+        /// Adds challenge ranking
+        /// </summary>
+        /// <param name="model"></param>
         public void AddUserChallengeRanking(ChallengeRanking model)
         {
             model.RankingDate = DateTime.Now;
@@ -39,7 +50,10 @@ namespace EChallenge.Respository
             }
         }
 
-
+        /// <summary>
+        /// Updates challenge ranking
+        /// </summary>
+        /// <param name="model"></param>
         public void UpdateChallengeRanking(ChallengeRanking model)
         {
             using (var entities = new EChallengeEntities())
@@ -57,7 +71,10 @@ namespace EChallenge.Respository
             }
         }
 
-
+        /// <summary>
+        /// Marks challenge ranking as deleted
+        /// </summary>
+        /// <param name="challengeRankingId"></param>
         public void DeleteChallengeRanking(int challengeRankingId)
         {
             using (var entities = new EChallengeEntities())

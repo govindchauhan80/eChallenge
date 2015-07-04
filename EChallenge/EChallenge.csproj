@@ -172,6 +172,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="ControllerAPIs\ChallengeCategoryController.cs" />
     <Compile Include="ControllerAPIs\ChallengeController.cs" />
+    <Compile Include="ControllerAPIs\ChallengeRankingController.cs" />
     <Compile Include="ControllerAPIs\GiftController.cs" />
     <Compile Include="ControllerAPIs\UserChallengeController.cs" />
     <Compile Include="ControllerAPIs\UserController.cs" />
