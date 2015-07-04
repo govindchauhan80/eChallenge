@@ -8,7 +8,10 @@ namespace EChallenge.Respository
 {
     public class UserChallengeRankingRepository
     {
-
+        /// <summary>
+        /// Gets all user challenge ranking
+        /// </summary>
+        /// <returns></returns>
         public ICollection<UserRankingViewModel> GetAllUserChallengeRanking()
         {
             var entities = new EChallengeEntities();
@@ -22,17 +25,21 @@ namespace EChallenge.Respository
                     }).ToList();
         }
 
-
+        /// <summary>
+        /// Gets user challenge ranking  by UserId
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
         public ICollection<UserChallengeRanking> GetUserChallengeRankingByUserId(int userId)
         {
             var entities = new EChallengeEntities();
             return entities.UserChallengeRankings.Where(c => c.UserId == userId).ToList();
         }
 
-        /// <summary>
-        /// Creates a new User
-        /// </summary>
-        /// <param name="model"></param>
+       /// <summary>
+       /// Adds a user challenge ranking
+       /// </summary>
+       /// <param name="model"></param>
         public void AddUserChallengeRanking(UserChallengeRanking model)
         {
             model.RankingDate = DateTime.Now;
@@ -44,7 +51,7 @@ namespace EChallenge.Respository
         }
 
         /// <summary>
-        /// Updates a User
+        /// Updates user challenge ranking
         /// </summary>
         /// <param name="model"></param>
         public void UpdateUserChallengeRanking(UserChallengeRanking model)
@@ -65,10 +72,10 @@ namespace EChallenge.Respository
             }
         }
 
-        /// <summary>
-        /// Marks a User as deleted
-        /// </summary>
-        /// <param name="userChallengeRankingId"></param>
+      /// <summary>
+      /// Deletes a user challenge ranking
+      /// </summary>
+      /// <param name="userChallengeRankingId"></param>
         public void DeleteUserChallengeRanking(int userChallengeRankingId)
         {
             using (var entities = new EChallengeEntities())
