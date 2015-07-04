@@ -10,18 +10,14 @@ namespace EChallenge.Respository
     {
         public ICollection<UserGiftRedemption> GetAllGiftRedemptionForUser(int userId)
         {
-            using (var entities = new EChallengeEntities())
-            {
-                return entities.UserGiftRedemptions.Where(ugr => ugr.UserId == userId).ToList();
-            }
+            var entities = new EChallengeEntities();
+            return entities.UserGiftRedemptions.Where(ugr => ugr.UserId == userId).ToList();
         }
 
         public ICollection<UserGiftRedemption> GetAllGiftRedemptionByUser()
         {
-            using (var entities = new EChallengeEntities())
-            {
-                return entities.UserGiftRedemptions.ToList();
-            }
+            var entities = new EChallengeEntities();
+            return entities.UserGiftRedemptions.ToList();
         }
 
         public void AddUserGiftRedemption(UserGiftRedemption model)

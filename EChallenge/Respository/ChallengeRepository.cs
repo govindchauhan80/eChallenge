@@ -14,10 +14,8 @@ namespace EChallenge.Respository
         /// <returns></returns>
         public ICollection<Challenge> GetAllChallenges()
         {
-            using (var entities = new EChallengeEntities())
-            {
-                return entities.Challenges.Where(c => !c.IsDeleted).ToList();
-            }
+            var entities = new EChallengeEntities();
+            return entities.Challenges.Where(c => !c.IsDeleted).ToList();
         }
 
         /// <summary>
@@ -27,10 +25,8 @@ namespace EChallenge.Respository
         /// <returns></returns>
         public Challenge GetChallengeByChallengeId(int challengeId)
         {
-            using (var entities = new EChallengeEntities())
-            {
-                return entities.Challenges.Where(c => !c.IsDeleted && c.ChallengeId==challengeId && c.ExpiryDate>=DateTime.UtcNow).FirstOrDefault();
-            }
+            var entities = new EChallengeEntities();
+            return entities.Challenges.Where(c => !c.IsDeleted && c.ChallengeId == challengeId && c.ExpiryDate >= DateTime.UtcNow).FirstOrDefault();
         }
 
         /// <summary>
@@ -40,10 +36,8 @@ namespace EChallenge.Respository
         /// <returns></returns>
         public ICollection<Challenge> GetChallengesByUserId(int userId)
         {
-            using (var entities = new EChallengeEntities())
-            {
-                return entities.Challenges.Where(c => !c.IsDeleted && c.CreatedBy == userId).ToList();
-            }
+            var entities = new EChallengeEntities();
+            return entities.Challenges.Where(c => !c.IsDeleted && c.CreatedBy == userId).ToList();
         }
 
         /// <summary>
@@ -53,10 +47,8 @@ namespace EChallenge.Respository
         /// <returns></returns>
         public ICollection<Challenge> GetChallengesByCategoryId(int categoryId)
         {
-            using (var entities = new EChallengeEntities())
-            {
-                return entities.Challenges.Where(c => !c.IsDeleted && c.ChallengeCategoryId == categoryId && c.ExpiryDate >= DateTime.UtcNow).ToList();
-            }
+            var entities = new EChallengeEntities();
+            return entities.Challenges.Where(c => !c.IsDeleted && c.ChallengeCategoryId == categoryId && c.ExpiryDate >= DateTime.UtcNow).ToList();
         }
 
         /// <summary>

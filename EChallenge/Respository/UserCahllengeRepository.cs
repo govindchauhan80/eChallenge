@@ -11,18 +11,14 @@ namespace EChallenge.Respository
     {
         public ICollection<UserChallenge> GetAllChallengeByUserId(int userId)
         {
-            using (var entities = new EChallengeEntities())
-            {
-                return entities.UserChallenges.Where(c => c.UserId == userId).ToList();
-            }
+            var entities = new EChallengeEntities();
+            return entities.UserChallenges.Where(c => c.UserId == userId).ToList();
         }
 
         public ICollection<UserChallenge> GetAllUserByChallengeId(int challengeId)
         {
-            using (var entities = new EChallengeEntities())
-            {
-                return entities.UserChallenges.Where(c => c.ChallengeId == challengeId).ToList();
-            }
+            var entities = new EChallengeEntities();
+            return entities.UserChallenges.Where(c => c.ChallengeId == challengeId).ToList();
         }
 
         public void AddChallengeForUser(UserChallenge model)

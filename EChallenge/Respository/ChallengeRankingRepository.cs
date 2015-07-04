@@ -11,26 +11,22 @@ namespace EChallenge.Respository
 
         public ICollection<ChallengeRankingViewModel> GetAllChallengeRanking()
         {
-            using (var entities = new EChallengeEntities())
-            {
-                return (from ucr in entities.ChallengeRankings
-                        group ucr by ucr.ChallegneId into g
-                        select new ChallengeRankingViewModel
-                        {
-                            ChallengeId = (int)g.Select(ucr => ucr.ChallegneId).FirstOrDefault(),
-                             ChallengeRanking = (double)g.Average(ucr => ucr.Ranking),
-                            Challenge = g.Select(ucr => ucr.Challenge).FirstOrDefault()
-                        }).ToList();
-            }
+            var entities = new EChallengeEntities();
+            return (from ucr in entities.ChallengeRankings
+                    group ucr by ucr.ChallegneId into g
+                    select new ChallengeRankingViewModel
+                    {
+                        ChallengeId = (int)g.Select(ucr => ucr.ChallegneId).FirstOrDefault(),
+                        ChallengeRanking = (double)g.Average(ucr => ucr.Ranking),
+                        Challenge = g.Select(ucr => ucr.Challenge).FirstOrDefault()
+                    }).ToList();
         }
 
 
         public ICollection<ChallengeRanking> GetChallengeRankingByChallengeId(int challengeId)
         {
-            using (var entities = new EChallengeEntities())
-            {
-                return entities.ChallengeRankings.Where(c => c.ChallegneId == challengeId).ToList();
-            }
+            var entities = new EChallengeEntities();
+            return entities.ChallengeRankings.Where(c => c.ChallegneId == challengeId).ToList();
         }
 
         public void AddUserChallengeRanking(ChallengeRanking model)
@@ -43,7 +39,7 @@ namespace EChallenge.Respository
             }
         }
 
-       
+
         public void UpdateChallengeRanking(ChallengeRanking model)
         {
             using (var entities = new EChallengeEntities())
@@ -61,12 +57,12 @@ namespace EChallenge.Respository
             }
         }
 
-        
+
         public void DeleteChallengeRanking(int challengeRankingId)
         {
             using (var entities = new EChallengeEntities())
             {
-                var existingUserRanking = entities.ChallengeRankings.Where(c=>c.ChallengeRankingId == challengeRankingId).FirstOrDefault();
+                var existingUserRanking = entities.ChallengeRankings.Where(c => c.ChallengeRankingId == challengeRankingId).FirstOrDefault();
 
                 if (existingUserRanking == null)
                     throw new NullReferenceException("User not found");

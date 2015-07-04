@@ -14,10 +14,8 @@ namespace EChallenge.Respository
         /// <returns></returns>
         public ICollection<Gift> GetAllGifts()
         {
-            using (var entities = new EChallengeEntities())
-            {
-                return entities.Gifts.Where(c => !c.IsDeleted).ToList();
-            }
+            var entities = new EChallengeEntities();
+            return entities.Gifts.Where(c => !c.IsDeleted).ToList();
         }
 
         /// <summary>
@@ -27,10 +25,8 @@ namespace EChallenge.Respository
         /// <returns></returns>
         public Gift GetChallengeByGiftId(int giftId)
         {
-            using (var entities = new EChallengeEntities())
-            {
-                return entities.Gifts.Where(c => !c.IsDeleted && c.GiftId == giftId).FirstOrDefault();
-            }
+            var entities = new EChallengeEntities();
+            return entities.Gifts.Where(c => !c.IsDeleted && c.GiftId == giftId).FirstOrDefault();
         }
 
         /// <summary>
@@ -40,10 +36,8 @@ namespace EChallenge.Respository
         /// <returns></returns>
         public ICollection<Challenge> GetChallengesByUserId(int userId)
         {
-            using (var entities = new EChallengeEntities())
-            {
-                return entities.Challenges.Where(c => !c.IsDeleted && c.CreatedBy == userId).ToList();
-            }
+            var entities = new EChallengeEntities();
+            return entities.Challenges.Where(c => !c.IsDeleted && c.CreatedBy == userId).ToList();
         }
 
         /// <summary>

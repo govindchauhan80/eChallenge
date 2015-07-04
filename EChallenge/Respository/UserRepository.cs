@@ -14,10 +14,8 @@ namespace EChallenge.Respository
         /// <returns></returns>
         public ICollection<User> GetAllUsers()
         {
-            using (var entities = new EChallengeEntities())
-            {
-                return entities.Users.Where(c => !c.IsDeleted).ToList();
-            }
+            var entities = new EChallengeEntities();
+            return entities.Users.Where(c => !c.IsDeleted).ToList();
         }
 
         /// <summary>
@@ -27,10 +25,8 @@ namespace EChallenge.Respository
         /// <returns></returns>
         public User GetUserByUserId(int userId)
         {
-            using (var entities = new EChallengeEntities())
-            {
-                return entities.Users.Where(c => !c.IsDeleted && c.UserId == userId).FirstOrDefault();
-            }
+            var entities = new EChallengeEntities();
+            return entities.Users.Where(c => !c.IsDeleted && c.UserId == userId).FirstOrDefault();
         }
 
         /// <summary>

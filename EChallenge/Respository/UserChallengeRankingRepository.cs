@@ -11,26 +11,22 @@ namespace EChallenge.Respository
 
         public ICollection<UserRankingViewModel> GetAllUserChallengeRanking()
         {
-            using (var entities = new EChallengeEntities())
-            {
-                return (from ucr in entities.UserChallengeRankings
-                        group ucr by ucr.UserId into g
-                        select new UserRankingViewModel
-                        {
-                            UserId = (int)g.Select(ucr => ucr.UserId).FirstOrDefault(),
-                            UserRanking = (double)g.Average(ucr => ucr.Ranking),
-                            User = g.Select(ucr => ucr.User).FirstOrDefault()
-                        }).ToList();
-            }
+            var entities = new EChallengeEntities();
+            return (from ucr in entities.UserChallengeRankings
+                    group ucr by ucr.UserId into g
+                    select new UserRankingViewModel
+                    {
+                        UserId = (int)g.Select(ucr => ucr.UserId).FirstOrDefault(),
+                        UserRanking = (double)g.Average(ucr => ucr.Ranking),
+                        User = g.Select(ucr => ucr.User).FirstOrDefault()
+                    }).ToList();
         }
 
 
         public ICollection<UserChallengeRanking> GetUserChallengeRankingByUserId(int userId)
         {
-            using (var entities = new EChallengeEntities())
-            {
-                return entities.UserChallengeRankings.Where(c => c.UserId == userId).ToList();
-            }
+            var entities = new EChallengeEntities();
+            return entities.UserChallengeRankings.Where(c => c.UserId == userId).ToList();
         }
 
         /// <summary>
@@ -55,7 +51,7 @@ namespace EChallenge.Respository
         {
             using (var entities = new EChallengeEntities())
             {
-                var existingUserRanking = entities.UserChallengeRankings.Where(c=>c.UserChallengeRankingId == model.UserChallengeRankingId).FirstOrDefault();
+                var existingUserRanking = entities.UserChallengeRankings.Where(c => c.UserChallengeRankingId == model.UserChallengeRankingId).FirstOrDefault();
 
                 if (existingUserRanking == null)
                     throw new NullReferenceException("existingUserRanking not found");
@@ -77,7 +73,7 @@ namespace EChallenge.Respository
         {
             using (var entities = new EChallengeEntities())
             {
-                var existingUserRanking = entities.UserChallengeRankings.Where(c=>c.UserChallengeRankingId == userChallengeRankingId).FirstOrDefault();
+                var existingUserRanking = entities.UserChallengeRankings.Where(c => c.UserChallengeRankingId == userChallengeRankingId).FirstOrDefault();
 
                 if (existingUserRanking == null)
                     throw new NullReferenceException("User not found");

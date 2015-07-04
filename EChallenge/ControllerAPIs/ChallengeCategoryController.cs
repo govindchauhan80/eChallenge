@@ -32,21 +32,11 @@ namespace EChallenge.ControllerAPIs
         /// </summary>
         /// <param name="categoryId"></param>
         /// <returns></returns>
-        public ChallengeCategory GetChallengeByChallengeCategoryId(int categoryId)
+        public ChallengeCategory GetChallengeCategoryByChallengeCategoryId(int categoryId)
         {
-            return challengeCategoryRepository.GetChallengeByChallengeCategoryId(categoryId);
+            return challengeCategoryRepository.GetChallengeCategoryByChallengeCategoryId(categoryId);
         }
-
-        /// <summary>
-        /// Gets all challengeCategories created by current user
-        /// </summary>
-        /// <param name="userId"></param>
-        /// <returns></returns>
-        public ICollection<Challenge> GetChallengesByUserId(int userId)
-        {
-            return challengeCategoryRepository.GetChallengesByUserId(userId);
-        }
-
+                
         /// <summary>
         /// Creates a new challenge Category
         /// </summary>

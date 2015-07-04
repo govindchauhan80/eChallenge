@@ -14,10 +14,9 @@ namespace EChallenge.Respository
         /// <returns></returns>
         public ICollection<ChallengeCategory> GetAllChallengeCategories()
         {
-            using (var entities = new EChallengeEntities())
-            {
-                return entities.ChallengeCategories.Where(c => !c.IsDeleted).ToList();
-            }
+            var entities = new EChallengeEntities();
+            return entities.ChallengeCategories.Where(c => !c.IsDeleted).ToList();
+
         }
 
         /// <summary>
@@ -25,27 +24,12 @@ namespace EChallenge.Respository
         /// </summary>
         /// <param name="categoryId"></param>
         /// <returns></returns>
-        public ChallengeCategory GetChallengeByChallengeCategoryId(int categoryId)
+        public ChallengeCategory GetChallengeCategoryByChallengeCategoryId(int categoryId)
         {
-            using (var entities = new EChallengeEntities())
-            {
-                return entities.ChallengeCategories.Where(c => !c.IsDeleted && c.ChallengeCategoryId == categoryId).FirstOrDefault();
-            }
+            var entities = new EChallengeEntities();
+            return entities.ChallengeCategories.Where(c => !c.IsDeleted && c.ChallengeCategoryId == categoryId).FirstOrDefault();
         }
-
-        /// <summary>
-        /// Gets all challengeCategories created by current user
-        /// </summary>
-        /// <param name="userId"></param>
-        /// <returns></returns>
-        public ICollection<Challenge> GetChallengesByUserId(int userId)
-        {
-            using (var entities = new EChallengeEntities())
-            {
-                return entities.Challenges.Where(c => !c.IsDeleted && c.CreatedBy == userId).ToList();
-            }
-        }
-
+               
         /// <summary>
         /// Creates a new challenge Category
         /// </summary>

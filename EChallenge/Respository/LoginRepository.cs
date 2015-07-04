@@ -10,10 +10,8 @@ namespace EChallenge.Respository
     {
         public User Login(string userEmail, string password)
         {
-            using (var entities = new EChallengeEntities())
-            {
-                return entities.Users.Where(u =>!u.IsDeleted && u.EmailId == userEmail && u.Password == password).FirstOrDefault();
-            }
+            var entities = new EChallengeEntities();
+            return entities.Users.Where(u => !u.IsDeleted && u.EmailId == userEmail && u.Password == password).FirstOrDefault();
         }
     }
 }
