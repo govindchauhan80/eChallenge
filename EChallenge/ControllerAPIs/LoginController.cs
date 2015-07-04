@@ -1,13 +1,21 @@
 ﻿using EChallenge.Models;
+using EChallenge.Respository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
 
-namespace EChallenge.Respository
+namespace EChallenge.ControllerAPIs
 {
-    public class LoginRepository
+    public class LoginController : ApiController
     {
+        LoginRepository loginRepository;
+        public LoginController()
+        {
+            loginRepository = new LoginRepository();
+        }
         /// <summary>
         /// Checks for Login Credentials
         /// </summary>
@@ -16,8 +24,7 @@ namespace EChallenge.Respository
         /// <returns></returns>
         public User Login(string userEmail, string password)
         {
-            var entities = new EChallengeEntities();
-            return entities.Users.Where(u => !u.IsDeleted && u.EmailId == userEmail && u.Password == password).FirstOrDefault();
+            return loginRepository.Login(userEmail, password);
         }
     }
 }
