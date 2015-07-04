@@ -39,16 +39,6 @@ namespace EChallenge.ControllerAPIs
         }
 
         /// <summary>
-        /// Gets all Gifts created by current user
-        /// </summary>
-        /// <param name="userId"></param>
-        /// <returns></returns>
-        public ICollection<Challenge> GetChallengesByUserId(int userId)
-        {
-            return giftRepository.GetChallengesByUserId(userId);
-        }
-
-        /// <summary>
         /// Creates a new Gift
         /// </summary>
         /// <param name="model"></param>

@@ -19,7 +19,7 @@ namespace EChallenge.Respository
         }
 
         /// <summary>
-        /// Gets Challenge Cagegory by challenge category Id
+        /// Gets Gift by giftId
         /// </summary>
         /// <param name="giftId"></param>
         /// <returns></returns>
@@ -28,18 +28,7 @@ namespace EChallenge.Respository
             var entities = new EChallengeEntities();
             return entities.Gifts.Where(c => !c.IsDeleted && c.GiftId == giftId).FirstOrDefault();
         }
-
-        /// <summary>
-        /// Gets all Gifts created by current user
-        /// </summary>
-        /// <param name="userId"></param>
-        /// <returns></returns>
-        public ICollection<Challenge> GetChallengesByUserId(int userId)
-        {
-            var entities = new EChallengeEntities();
-            return entities.Challenges.Where(c => !c.IsDeleted && c.CreatedBy == userId).ToList();
-        }
-
+        
         /// <summary>
         /// Creates a new Gift
         /// </summary>
