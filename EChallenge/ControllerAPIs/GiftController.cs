@@ -33,9 +33,9 @@ namespace EChallenge.ControllerAPIs
         /// </summary>
         /// <param name="giftId"></param>
         /// <returns></returns>
-        public Gift GetChallengeByGiftId(int giftId)
+        public Gift GetGiftByGiftId(int giftId)
         {
-            return giftRepository.GetChallengeByGiftId(giftId);
+            return giftRepository.GetGiftByGiftId(giftId);
         }
 
         /// <summary>

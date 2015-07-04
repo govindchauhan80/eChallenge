@@ -23,7 +23,7 @@ namespace EChallenge.Respository
         /// </summary>
         /// <param name="giftId"></param>
         /// <returns></returns>
-        public Gift GetChallengeByGiftId(int giftId)
+        public Gift GetGiftByGiftId(int giftId)
         {
             var entities = new EChallengeEntities();
             return entities.Gifts.Where(c => !c.IsDeleted && c.GiftId == giftId).FirstOrDefault();
