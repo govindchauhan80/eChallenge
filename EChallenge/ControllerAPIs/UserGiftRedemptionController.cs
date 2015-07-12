@@ -27,6 +27,17 @@ namespace EChallenge.ControllerAPIs
             return userGiftRedemptionRepository.GetAllGiftRedemptionForUser(userId);
         }
 
+
+        /// <summary>
+        /// Gets gifts available for user
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public ICollection<Gift> GetGiftsAvailableForUser(int userId)
+        {
+            return userGiftRedemptionRepository.GetGiftsAvailableForUser(userId);
+        }
+
         /// <summary>
         /// Gets all gift redemtion
         /// </summary>

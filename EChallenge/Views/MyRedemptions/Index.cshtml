@@ -1,0 +1,69 @@
+﻿@model EChallenge.Models.MyRedemptionsViewModel
+
+@{
+    Layout = null;
+}
+
+@using EChallenge.Models;
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <table class="table">
+        <tr>
+            <th>Gifts Available for User</th>
+        </tr>
+        @{int counter = 0;}
+        <tr>
+            @foreach (Gift gift in Model.GiftsAvailableForRedemption)
+            {
+                if (counter > 0 && counter % 3 == 0)
+                {
+                <tr>
+                    <td height="200" width="200" style="border-width:thick">
+                        <img height="200" width="200" id="@gift.GiftId" src="@Url.Content(gift.ImagePath)">
+                    </td>
+                </tr>
+                }
+                else
+                {
+                    <td height="200" width="200" style="border-width:thick">
+                        <img height="200" width="200" id="@gift.GiftId" src="@Url.Content(gift.ImagePath)">
+                    </td>
+                }
+                counter += 1;
+            }
+            </tr>
+        </table>
+        <table class="table">
+            <tr>
+                <th>Gifts Redemption by User</th>
+            </tr>
+            @{int counter2 = 0;}
+            <tr>
+                @foreach (UserGiftRedemption userGiftRedemption in Model.GiftsAvailed)
+                {
+                    if (counter2 > 0 && counter2 % 3 == 0)
+                    {
+                    <tr>
+                        <td height="200" width="200" style="border-width:thick">
+                            <img height="200" width="200" id="@userGiftRedemption.UserGiftRedemptionId" src="@Url.Content(userGiftRedemption.Gift.ImagePath)">
+                        </td>
+                    </tr>
+                    }
+                    else
+                    {
+                        <td height="200" width="200" style="border-width:thick">
+                            <img height="200" width="200" id="@userGiftRedemption.UserGiftRedemptionId" src="@Url.Content(userGiftRedemption.Gift.ImagePath)">
+                        </td>
+                    }
+                    counter += 1;
+                }
+                </tr>
+            </table>
+        </body>
+    </html>

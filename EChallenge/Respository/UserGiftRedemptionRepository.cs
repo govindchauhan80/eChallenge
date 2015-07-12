@@ -20,6 +20,21 @@ namespace EChallenge.Respository
         }
 
         /// <summary>
+        /// Gets gifts available for user
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public ICollection<Gift> GetGiftsAvailableForUser(int userId)
+        {
+            var entities = new EChallengeEntities();
+            int pointsEarned = entities.UserChallengeRankings.Where(ucr => ucr.UserId == userId).Sum(ucr => ucr.Ranking) ?? default(int);
+            int pointsAvailed = (int)(entities.UserGiftRedemptions.Where(ugr => ugr.UserId == userId).Sum(ugr => ugr.PointsConsumed) ?? default(int));
+
+            var gifts = entities.Gifts.Where(g => !g.IsDeleted && g.Points <= (pointsEarned - pointsAvailed)).ToList();
+            return gifts;
+        }
+
+        /// <summary>
         /// Gets all gift redemtion
         /// </summary>
         /// <returns></returns>

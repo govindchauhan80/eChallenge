@@ -183,6 +183,7 @@
     <Compile Include="Controllers\ChallengeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MyRedemptionsController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -217,6 +218,7 @@
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MyRedemptionsViewModel.cs" />
     <Compile Include="Models\Role.cs">
       <DependentUpon>EChallengeModel.tt</DependentUpon>
     </Compile>
@@ -368,6 +370,7 @@
     <Content Include="Views\Challenge\ChallengeView.cshtml" />
     <Content Include="Views\Challenge\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\MyRedemptions\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
