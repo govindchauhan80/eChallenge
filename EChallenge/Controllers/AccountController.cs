@@ -77,9 +77,12 @@ namespace EChallenge.Controllers
                 return View(model);
             }
             User user = loginController.Login(model.Email, model.Password);
- 
-            if(user!=null)
-                return RedirectToLocal(returnUrl);
+
+            if (user != null)
+            {
+                Session["User"] = user;
+                return RedirectToAction("Index", "Challenge");
+            }
             else
                 ModelState.AddModelError("", "Invalid login attempt.");
             return View(model);

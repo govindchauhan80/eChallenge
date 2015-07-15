@@ -16,11 +16,7 @@ namespace EChallenge.Controllers
         public ActionResult Details()
         {
             UserRepository userRepository = new UserRepository();
-            User TempUser = new User();
-            TempUser = userRepository.GetUserByUserId(3);
-            Session["User"] = TempUser;
-            User user = new User();
-            user = (User)Session["User"];
+            User user = (User)Session["User"];
             user.DOB = user.DOB.Date;
             return View(user);
         }

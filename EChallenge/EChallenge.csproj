@@ -220,6 +220,7 @@
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MyRedemptionsViewModel.cs" />
     <Compile Include="Models\Role.cs">
       <DependentUpon>EChallengeModel.tt</DependentUpon>
     </Compile>
