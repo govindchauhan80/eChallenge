@@ -178,6 +178,8 @@
     <Compile Include="ControllerAPIs\UserChallengeController.cs" />
     <Compile Include="ControllerAPIs\UserController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Admin\AdminCategoryController.cs" />
+    <Compile Include="Controllers\Admin\AdminGiftController.cs" />
     <Compile Include="Controllers\ChallengeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -366,10 +368,19 @@
     <Content Include="Views\Challenge\ChallengeView.cshtml" />
     <Content Include="Views\Challenge\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Challenge\TakeChallenge.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\AdminCategory\Index.cshtml" />
+    <Content Include="Views\AdminCategory\Create.cshtml" />
+    <Content Include="Views\AdminCategory\Edit.cshtml" />
+    <Content Include="Views\AdminGift\Index.cshtml" />
+    <Content Include="Views\AdminGift\Create.cshtml" />
+    <Content Include="Views\AdminGift\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\images\" />
+    <Folder Include="Content\images\Profile\" />
+    <Folder Include="Views\Admin\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -395,7 +406,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>15568</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
