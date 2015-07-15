@@ -20,8 +20,9 @@ namespace EChallenge.Controllers
         public ActionResult Index()
         {
             MyRedemptionsViewModel myRedemptionsViewModel = new MyRedemptionsViewModel();
-            myRedemptionsViewModel.GiftsAvailableForRedemption = userGiftRedemptionAPI.GetGiftsAvailableForUser(4);
-            myRedemptionsViewModel.GiftsAvailed = userGiftRedemptionAPI.GetAllGiftRedemptionForUser(4);
+            User user = (User)Session["User"];
+            myRedemptionsViewModel.GiftsAvailableForRedemption = userGiftRedemptionAPI.GetGiftsAvailableForUser(Convert.ToInt32(user.UserId));
+            myRedemptionsViewModel.GiftsAvailed = userGiftRedemptionAPI.GetAllGiftRedemptionForUser(Convert.ToInt32(user.UserId));
             return View(myRedemptionsViewModel);
         }
     }
