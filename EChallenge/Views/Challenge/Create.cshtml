@@ -7,10 +7,10 @@
 <h2>Create Challenge</h2>
 <hr />
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         @Html.ValidationSummary(true)
 
@@ -87,58 +87,10 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.SupportingDocumentPath, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.SupportingDocumentPath)
-                @Html.ValidationMessageFor(model => model.SupportingDocumentPath)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ChallengeImagePath, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ChallengeImagePath)
-                @Html.ValidationMessageFor(model => model.ChallengeImagePath)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.CreatedBy, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CreatedBy)
-                @Html.ValidationMessageFor(model => model.CreatedBy)
-            </div>
-        </div>
-
-        <div class="form-group">
             @Html.LabelFor(model => model.ExpiryDate, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.ExpiryDate)
                 @Html.ValidationMessageFor(model => model.ExpiryDate)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.CreatedDated, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CreatedDated)
-                @Html.ValidationMessageFor(model => model.CreatedDated)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.UpdatedDate, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.UpdatedDate)
-                @Html.ValidationMessageFor(model => model.UpdatedDate)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.IsDeleted, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.IsDeleted)
-                @Html.ValidationMessageFor(model => model.IsDeleted)
             </div>
         </div>
 
@@ -150,6 +102,40 @@
     </div>
 }
 
+@using (Html.BeginForm("UploadImage", "Challenge", FormMethod.Post
+            , new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary();
+    <div class="form-horizontal">
+        <div class="form-group">
+            @Html.LabelFor(model => model.ChallengeImagePath, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <img src="@ViewBag.ImageURL" width="200px" height="200px" />
+                <input type="file" id="fileToUpload" name="file" />
+                <span class="field-validation-error" id="spanfile"></span>
+
+                <input type="submit" id="btnSubmit" value="Upload" />
+            </div>
+        </div>
+    </div>
+}
+
+@using (Html.BeginForm("UploadDocument", "Challenge", FormMethod.Post
+            , new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary();
+    <div class="form-horizontal">
+        <div class="form-group">
+            @Html.LabelFor(model => model.SupportingDocumentPath, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" id="fileToUpload" name="file" />
+                <span class="field-validation-error" id="spanfile"></span>
+
+                <input type="submit" id="btnSubmit" value="Upload" />
+            </div>
+        </div>
+    </div>
+}
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>

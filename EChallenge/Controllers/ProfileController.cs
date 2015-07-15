@@ -2,6 +2,7 @@
 using EChallenge.Respository;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -44,6 +45,7 @@ namespace EChallenge.Controllers
                 if(ModelState.IsValid)
                 {
                     UserRepository userRepository = new UserRepository();
+                    model.ProfilePicUrl = ViewBag.ImageURL;
                     userRepository.UpdateUser(model);
                 }
                 return RedirectToAction("Details");
@@ -53,5 +55,48 @@ namespace EChallenge.Controllers
                 return View();
             }
         }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public ActionResult Upload(HttpPostedFileBase file)
+        {
+            if (ModelState.IsValid)
+            {
+                if (file == null)
+                {
+                    ModelState.AddModelError("File", "Please Upload Your file");
+                }
+                else if (file.ContentLength > 0)
+                {
+                    int MaxContentLength = 1024 * 1024 * 4; //Size = 4 MB
+                    string[] AllowedFileExtensions = new string[] { ".jpg", ".gif", ".png", ".pdf" };
+                    if (!AllowedFileExtensions.Contains
+         (file.FileName.Substring(file.FileName.LastIndexOf('.'))))
+                    {
+                        ModelState.AddModelError("File", "Please file of type: " + string.Join(", ", AllowedFileExtensions));
+                    }
+                    else if (file.ContentLength > MaxContentLength)
+                    {
+                        ModelState.AddModelError("File", "Your file is too large, maximum allowed size is: " + MaxContentLength + " MB");
+                    }
+                    else
+                    {
+                        var fileName = Path.GetFileName(file.FileName);
+                        var path = Path.Combine(Server.MapPath("~/Content/Images/Profile"), fileName);
+                        ViewBag.ImageURL = path;
+                        
+                        file.SaveAs(path);
+                        User model = (User)Session["User"];
+                        UserRepository userRepository = new UserRepository();
+                        model.ProfilePicUrl = ViewBag.ImageURL;
+                        userRepository.UpdateUser(model);
+                        ViewBag.Message = "File uploaded successfully.";
+                      //  ViewBag.Keep();
+                    }
+                }
+            }
+            return RedirectToAction("Edit");
+        }
     }
 }
+    

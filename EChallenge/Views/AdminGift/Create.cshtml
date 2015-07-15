@@ -1,0 +1,66 @@
+﻿@model EChallenge.Models.Gift
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Create</h2>
+<div class="col-lg-8">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Gift</h4>
+            <hr />
+            @Html.ValidationSummary(true)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Title, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Title)
+                    @Html.ValidationMessageFor(model => model.Title)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Points, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Points)
+                    @Html.ValidationMessageFor(model => model.Points)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Price, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Price)
+                    @Html.ValidationMessageFor(model => model.Price)
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<div class="col-lg-4">
+    <h3>Upload Gift Image</h3>
+    @using (Html.BeginForm("Upload", "AdminGift", FormMethod.Post
+            , new { enctype = "multipart/form-data" }))
+    {
+        @Html.ValidationSummary();
+        <img src="@ViewBag.ImageURL" width="200px" height="200px" />
+        <input type="file" id="fileToUpload" name="file" />
+        <span class="field-validation-error" id="spanfile"></span>
+
+        <input type="submit" id="btnSubmit" value="Upload" />
+    }
+</div>
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

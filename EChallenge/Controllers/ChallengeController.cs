@@ -78,5 +78,10 @@ namespace EChallenge.Controllers
                 return View();
             }
         }
+
+        public ActionResult TakeChallenge(int challengeId)
+        {
+            return View();
+        }
     }
 }
