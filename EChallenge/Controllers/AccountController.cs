@@ -11,6 +11,7 @@ using Microsoft.Owin.Security;
 using EChallenge.Models;
 using EChallenge.Respository;
 using System.IO;
+using EChallenge.ControllerAPIs;
 
 namespace EChallenge.Controllers
 {
@@ -19,9 +20,10 @@ namespace EChallenge.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-
+        LoginController loginController;
         public AccountController()
         {
+            loginController = new LoginController();
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
@@ -74,23 +76,30 @@ namespace EChallenge.Controllers
             {
                 return View(model);
             }
+            User user = loginController.Login(model.Email, model.Password);
+ 
+            if(user!=null)
+                return RedirectToLocal(returnUrl);
+            else
+                ModelState.AddModelError("", "Invalid login attempt.");
+            return View(model);
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
-            switch (result)
-            {
-                case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
-                case SignInStatus.LockedOut:
-                    return View("Lockout");
-                case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
-                case SignInStatus.Failure:
-                default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
-                    return View(model);
-            }
+            //var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            //switch (result)
+            //{
+            //    case SignInStatus.Success:
+            //        return RedirectToLocal(returnUrl);
+            //    case SignInStatus.LockedOut:
+            //        return View("Lockout");
+            //    case SignInStatus.RequiresVerification:
+            //        return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+            //    case SignInStatus.Failure:
+            //    default:
+            //        ModelState.AddModelError("", "Invalid login attempt.");
+            //        return View(model);
+            //}
         }
 
         //
@@ -176,17 +185,17 @@ namespace EChallenge.Controllers
                 //if (result.Succeeded)
                 //{
 
-                    //await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-                    var loginModel = new LoginViewModel{Email=model.Email,Password=model.Password,RememberMe=false};
-                    await Login(loginModel, "/Index/Home");
-                    // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
-                    // Send an email with this link
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                //await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                var loginModel = new LoginViewModel { Email = model.Email, Password = model.Password, RememberMe = false };
+                await Login(loginModel, "/Index/Home");
+                // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
+                // Send an email with this link
+                // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Index", "Home");
-               // }
+                return RedirectToAction("Index", "Home");
+                // }
                 //AddErrors(result);
             }
 
@@ -449,7 +458,7 @@ namespace EChallenge.Controllers
         [AllowAnonymous]
         public ActionResult Upload(HttpPostedFileBase file)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 if (file == null)
                 {

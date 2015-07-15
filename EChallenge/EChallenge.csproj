@@ -176,13 +176,16 @@
     <Compile Include="ControllerAPIs\GiftController.cs" />
     <Compile Include="ControllerAPIs\LoginController.cs" />
     <Compile Include="ControllerAPIs\UserChallengeController.cs" />
+    <Compile Include="ControllerAPIs\UserChallengeRankingController.cs" />
     <Compile Include="ControllerAPIs\UserController.cs" />
+    <Compile Include="ControllerAPIs\UserGiftRedemptionController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Admin\AdminCategoryController.cs" />
     <Compile Include="Controllers\Admin\AdminGiftController.cs" />
     <Compile Include="Controllers\ChallengeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MyRedemptionsController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
